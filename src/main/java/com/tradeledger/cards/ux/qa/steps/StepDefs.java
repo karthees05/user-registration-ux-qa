@@ -1,10 +1,11 @@
-package com.tradeledger.cards.ux.qa;
+package com.tradeledger.cards.ux.qa.steps;
 
 import com.tradeledger.cards.ux.qa.cucumber.TestContext;
 import com.tradeledger.cards.ux.qa.pageObjects.HomePage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,6 +13,7 @@ import io.cucumber.java.en.When;
 
 import java.util.List;
 
+import static com.tradeledger.cards.ux.qa.Utils.Utility.takeScreenShot;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringWhiteSpace;
@@ -20,19 +22,23 @@ import static org.hamcrest.Matchers.equalToIgnoringWhiteSpace;
 public class StepDefs {
     TestContext testContext;
     HomePage homePage;
+    public static String scenarioName = "";
 
     @Before
-    public void BeforeSteps() {
+    public void BeforeSteps(Scenario scenario) {
+        scenarioName = scenario.getName();
     }
 
     @After
-    public void AfterSteps() {
+    public void AfterSteps(Scenario scenario) {
+        if (scenario.isFailed()) {
+            takeScreenShot(testContext.getWebDriverManager().getDriver());
+        }
         testContext.getWebDriverManager().closeDriver();
     }
 
     public StepDefs(TestContext context) {
         testContext = context;
-
         homePage = testContext.getPageObjectManager().getCardsHomePage();
     }
 
