@@ -19,16 +19,25 @@ Steps to follow:
 The Run time parameter needs to be updated based on which environment where we are running.
 
 The following parameters are valid if we run through runner class for local profile
-```>-Dbrowser.type=chrome -Dapp.profile=local -Dapp.uri=http://localhost:3000/```
-
+```bash
+-Dbrowser.type=chrome -Dapp.profile=local -Dapp.uri=http://localhost:3000/
+```
 
 #### Run the End to End UI Tests through gradle task or Pipeline or standalone Jenkins job
 
 The Cucumber tests can be executed along with a stage of this End to End UI Tests in Pipeline or Standalone Jenkins job
 
 From IDE's terminal we can use the below parameters to run End to End UI scenarios.
-Template: ```>./gradle clean cucumber -Dbrowser.type=<browser_type> -Dapp.uri=uri```
-Example: ```>./gradle clean cucumber -Dbrowser.type=chrome -Dapp.uri=http://localhost:3000/```
+
+Syntax:
+```bash
+./gradle clean cucumber -Dbrowser.type=<browser_type> -Dapp.uri=uri
+```
+
+Example:
+```bash
+./gradle clean cucumber -Dbrowser.type=chrome -Dapp.uri=http://localhost:3000/
+```
 
 Similarly, we can run for other environments by configuring/providing the above 2 parameters in runtime on Pipeline or standalone Jenkins Job.
 
