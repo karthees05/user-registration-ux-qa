@@ -42,3 +42,5 @@ Example:
 Similarly, we can run for other environments by configuring/providing the above 2 parameters in runtime on Pipeline or standalone Jenkins Job.
 
 So this can be integrated easily with CI/CD Pipeline, and it can be executed whenever we want by adding this in a Pipeline stage.
+
+The screenshot reusable method has been added in after hook so that if there is a failure then the screenshot will be taken for quik reference
