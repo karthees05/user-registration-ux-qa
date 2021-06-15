@@ -1,6 +1,6 @@
 package com.tradeledger.cards.ux.qa.steps;
 
-import com.tradeledger.cards.ux.qa.cucumber.TestContext;
+import com.tradeledger.cards.ux.qa.contexts.TestContext;
 import com.tradeledger.cards.ux.qa.pageObjects.HomePage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
@@ -13,7 +13,7 @@ import io.cucumber.java.en.When;
 
 import java.util.List;
 
-import static com.tradeledger.cards.ux.qa.Utils.Utility.takeScreenShot;
+import static com.tradeledger.cards.ux.qa.utility.Utility.takeScreenShot;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringWhiteSpace;

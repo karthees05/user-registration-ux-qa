@@ -1,4 +1,4 @@
-package com.tradeledger.cards.ux.qa.Utils;
+package com.tradeledger.cards.ux.qa.utility;
 
 import com.tradeledger.cards.ux.qa.steps.StepDefs;
 import org.apache.commons.io.FileUtils;

@@ -1,4 +1,4 @@
-package com.tradeledger.cards.ux.qa.cucumber;
+package com.tradeledger.cards.ux.qa.contexts;
 
 import com.tradeledger.cards.ux.qa.factoryManager.PageObjectFactory;
 import com.tradeledger.cards.ux.qa.factoryManager.BrowserFactory;
