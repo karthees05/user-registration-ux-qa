@@ -1,7 +1,7 @@
-package com.tradeledger.cards.ux.qa.contexts;
+package com.automation.ux.qa.contexts;
 
-import com.tradeledger.cards.ux.qa.factoryManager.PageObjectFactory;
-import com.tradeledger.cards.ux.qa.factoryManager.BrowserFactory;
+import com.automation.ux.qa.factoryManager.BrowserFactory;
+import com.automation.ux.qa.factoryManager.PageObjectFactory;
 
 public class TestContext {
     private final BrowserFactory browserFactory;

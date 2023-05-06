@@ -1,4 +1,4 @@
-package com.tradeledger.cards.ux.qa.pageObjects;
+package com.automation.ux.qa.pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +13,5 @@ public class BasePage {
     public BasePage(final WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 5);
     }
-
 }

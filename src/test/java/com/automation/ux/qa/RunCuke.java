@@ -1,4 +1,4 @@
-package com.tradeledger.cards.ux.qa;
+package com.automation.ux.qa;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 				"json:target/cucumber.json",
 				"rerun:target/rerun.txt"},
 		features = "src/test/resources/features",
-		glue= {"com.tradeledger.cards.ux.qa"},
-		tags="@e2e_tests")
+		glue= {"com.automation.ux.qa"},
+		tags="@user_login_scenarios_negative")
 public class RunCuke {
 }

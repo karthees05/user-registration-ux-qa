@@ -1,6 +1,6 @@
-package com.tradeledger.cards.ux.qa.utility;
+package com.automation.ux.qa.utility;
 
-import com.tradeledger.cards.ux.qa.steps.StepDefs;
+import com.automation.ux.qa.steps.StepDefs;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
