@@ -1,5 +1,6 @@
-package com.tradeledger.cards.ux.qa.factoryManager;
+package com.automation.ux.qa.factoryManager;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,6 +21,7 @@ public class BrowserFactory {
     }
 
     private WebDriver startDriver() {
+        System.setProperty("webdriver.http.factory", "jdk-http-client");
         String driverType = System.getProperties().getProperty("browser.type");
         if (driverType.toLowerCase(Locale.ROOT).equalsIgnoreCase("edge")) {
             EdgeOptions edgeOptions = new EdgeOptions();

@@ -1,7 +1,9 @@
-package com.tradeledger.cards.ux.qa.steps;
+package com.automation.ux.qa.steps;
 
-import com.tradeledger.cards.ux.qa.contexts.TestContext;
-import com.tradeledger.cards.ux.qa.pageObjects.HomePage;
+import com.automation.ux.qa.pageObjects.HomePage;
+import com.automation.ux.qa.utility.Utility;
+import com.automation.ux.qa.contexts.TestContext;
+import com.automation.ux.qa.pageObjects.LoginPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -13,7 +15,6 @@ import io.cucumber.java.en.When;
 
 import java.util.List;
 
-import static com.tradeledger.cards.ux.qa.utility.Utility.takeScreenShot;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringWhiteSpace;
@@ -22,6 +23,7 @@ import static org.hamcrest.Matchers.equalToIgnoringWhiteSpace;
 public class StepDefs {
     TestContext testContext;
     HomePage homePage;
+    LoginPage loginPage;
     public static String scenarioName = "";
 
     @Before
@@ -32,7 +34,7 @@ public class StepDefs {
     @After
     public void AfterSteps(Scenario scenario) {
         if (scenario.isFailed()) {
-            takeScreenShot(testContext.getWebDriverManager().getDriver());
+            Utility.takeScreenShot(testContext.getWebDriverManager().getDriver());
         }
         testContext.getWebDriverManager().closeDriver();
     }
@@ -40,12 +42,20 @@ public class StepDefs {
     public StepDefs(TestContext context) {
         testContext = context;
         homePage = testContext.getPageObjectManager().getCardsHomePage();
+        loginPage = testContext.getPageObjectManager().getLoginPage();
     }
 
-    @Given("^user navigates to Home Page$")
-    public void goToHomePage() {
-        homePage.navigateToHomePage();
+
+    @Given("^user navigates to Login Page$")
+    public void gotoLoginPage() {
+        loginPage.navigateToLoginPage();
     }
+
+    @And("^the user is able to see the title (.*) in the (.*) page$")
+    public void gotoLoginPage(String title, String pageName) {
+        loginPage.validateLoginPage(title);
+    }
+
 
     @When("^user enters the registration details (.*) , (.*) , (.*)$")
     public void enterRegistrationDetails(final String name, final String email, final String address) {
@@ -80,6 +90,27 @@ public class StepDefs {
 
     @Then("^user is able to see the error message (.*)$")
     public void validateErrorMessages(final String errorMessage) {
-        assertThat(homePage.getErrorMessage(), equalToIgnoringWhiteSpace(errorMessage));
+//        assertThat(homePage.getErrorMessage(), equalToIgnoringWhiteSpace(errorMessage));
+        loginPage.validateErrorMessage(errorMessage);
+    }
+
+    @And("^user enters the (.*) in the (.*) field$")
+    public void userEntersTheUserNameInTheUsernameField(String value, String fieldName) {
+        if (fieldName.equalsIgnoreCase("Username")) {
+            loginPage.enterUserName(value);
+        } else if (fieldName.equalsIgnoreCase("Password")) {
+            loginPage.enterPassword(value);
+        }
+
+    }
+
+    @When("^user clicks on the (.*) button$")
+    public void userClicksOnTheSubmitButton(String fieldName) {
+        loginPage.clickSubmit();
+    }
+
+    @Then("^user is able to see the (.*) page with text (.*)$")
+    public void userIsAbleToSeeTheHomePage(String pageName, String pageTitle) {
+homePage.validateHomePageTitle(pageTitle);
     }
 }

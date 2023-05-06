@@ -1,8 +1,10 @@
-package com.tradeledger.cards.ux.qa.pageObjects;
+package com.automation.ux.qa.pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class HomePage extends BasePage {
@@ -35,9 +37,14 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@data-testid='ERROR']/form/h3")
     private WebElement errorMessage;
 
+    @FindBy(xpath = "//h1")
+    private WebElement homePagetitle;
+
     public void navigateToHomePage() {
         driver.get(System.getProperties().getProperty("app.uri"));
+//        driver.get("https://practicetestautomation.com/practice-test-login/");
     }
+
 
     public void enterName(final String name) {
         nameField.clear();
@@ -82,5 +89,10 @@ public class HomePage extends BasePage {
     }
 
 
+    public void validateHomePageTitle(String pageTitle) {
+        assertThat("Home page title is not available", homePagetitle.isDisplayed());
+        assertThat("Home page title is wrong", homePagetitle.getText().equalsIgnoreCase(pageTitle));
+
+    }
 }
 
